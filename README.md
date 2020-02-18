@@ -1,4 +1,5 @@
-# scheduler_with_priority
+# priority based scheduler
+
 Project to schedule tasks based on priority using PuLP in python
 
 Reference:
