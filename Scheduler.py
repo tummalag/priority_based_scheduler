@@ -9,7 +9,7 @@ schedule = pd.read_excel('tasks.xlsx','timeBlock',usecols="B",header=None)
 availability = pd.read_excel('tasks.xlsx','timeBlock',usecols="C",header=None)
 ti = pd.read_excel('tasks.xlsx','timeBlock',usecols="A",header=None)
 
-print(ti.iloc[4,0])
+#print(ti.iloc[4,0])
 
 problem = LpProblem('scheduler',LpMaximize)
 
@@ -36,15 +36,18 @@ for t in range(B):
 problem.solve()
 
 print("Assignment accomplished!")
+print("___________________________________")
+print("Task wise scheduling")
+print("___________________________________")
 for i in range(n):
     for t in range(B):
         if y[(i,t)].varValue ==1:
             #print(tasks.iloc[i,0],'at',ti.iloc[t,0])
             print('{0:20} at    {1}'.format(tasks.iloc[i,0], ti.iloc[t,0]))
 
-problem.solve()
-
-print("Assignment accomplished!")
+print("___________________________________")
+print("Time wise scheduling")
+print("___________________________________")
 for t in range(B):
     for i in range(n):
         if y[(i,t)].varValue ==1:
